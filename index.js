@@ -143,23 +143,33 @@ console.log(CemberinAlani(15, pi))
 	
 	
 	//3f çözümü
-		let	tekrarlar = [];
-		sayilar.forEach(item => {
-			if(item in tekrarlar){
-				tekrarlar[item] += 1;
-			}
-			else {
-				tekrarlar[item] = 1;
-			}
-		})
-		tekraredensayilar = [];
-		for(let item of tekrarlar) {
-			if(tekrarlar[item] > 1) {
-				tekraredensayilar.push(tekrarlar[item]);
-			}
+	let sayilar2 = sayilar.slice();
+	sayilar2.sort(function(a, b){return a - b});
+
+
+	let yeniDizi = [];
+	let yeniObje = {};
+
+
+
+	sayilar2.forEach(key => {
+		if(key in yeniObje){
+			yeniObje[key] += 1;
+		}else{
+			yeniObje[key] = 1;
 		}
+	});
 
 
+
+	for(const [x,y] of Object.entries(yeniObje)){
+		if(y > 1){
+		yeniDizi.push(`${x} sayısı ${y} kere tekrar edilmiştir`);
+		}
+	};
+	
+	tekraredensayilar = yeniDizi;
+	console.log(yeniDizi);
 
 
 
